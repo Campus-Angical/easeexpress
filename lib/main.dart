@@ -80,7 +80,7 @@ class _MyHomeState extends State<MyHome> {
                     Card(child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                       Image.network('https://listenx.com.br/blog/wp-content/uploads/2022/02/textos-comerciais-para-lojas-de-roupas.png'),
                       Text('Blazer'),
-                      Text('500.00'),
+                      Text('480.00'),
                     ],),)
                   ],),
         )
