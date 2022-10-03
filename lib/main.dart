@@ -26,12 +26,11 @@ class _MyHomeState extends State<MyHome> {
                 border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(40),
     ),
-            hintText: 'Procurar',
+            hintText: 'Categoria',
             hintStyle: TextStyle(
               color: Colors.teal.withOpacity(0.7),
               fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
+              fontSize: 20, ),
             suffixIcon: Icon(
               Icons.search,
               color: Colors.teal.withOpacity(0.7),
@@ -43,29 +42,15 @@ class _MyHomeState extends State<MyHome> {
         ),
         SizedBox(
           height: 100,
-          child: GridView(
+          child: 
+           GridView(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
-                childAspectRatio: 4),
+                childAspectRatio: 4), 
             children: [
-              Card(
-                color: Colors.amber,
-                child: Text('Algo'),
-              ),
-              Card(
-                color: Colors.red,
-                child: Text('Algo'),
-              ),
-              Card(
-                color: Colors.amberAccent,
-                child: Text('Algo'),
-              ),
-              Card(
-                color: Color.fromARGB(255, 243, 74, 74),
-                child: Text('Algo'),
-              ),
+              
             ],
           ),
         ),
@@ -77,25 +62,25 @@ class _MyHomeState extends State<MyHome> {
                   crossAxisSpacing: 8,
                   mainAxisSpacing: 8,
                   childAspectRatio: 1),children: [
-                    Card(child: Column(children: [
-                      Image.network('https://img.itdg.com.br/tdg/images/recipes/000/003/468/359047/359047_original.jpg?w=1200'),
-                      Text('data'),
-                      Text('data'),
+                    Card(child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                      Image.network('https://www.pocosja.com.br/divirta-se/wp-content/uploads/2017/09/DSC0415.jpg'),
+                      Text('Comida Mineira'),
+                      Text('120.00'),
                     ],),),
-                    Card(child: Column(children: [
-                      Image.network('https://img.itdg.com.br/tdg/images/recipes/000/003/468/359047/359047_original.jpg?w=1200'),
-                      Text('data'),
-                      Text('data'),
+                    Card(child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                      Image.network('https://saude.abril.com.br/wp-content/uploads/2016/11/cachorro-molhado.jpg'),
+                      Text('Banho De Tosa'),
+                      Text('110.00'),
                     ],),),
-                    Card(child: Column(children: [
-                      Image.network('https://img.itdg.com.br/tdg/images/recipes/000/003/468/359047/359047_original.jpg?w=1200'),
-                      Text('data'),
-                      Text('data'),
+                    Card(child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                      Image.network('https://uploads.metropoles.com/wp-content/uploads/2021/11/12165909/Perfumaria_O_Boticario.jpg'),
+                      Text('Lily'),
+                      Text('240.00'),
                     ],),),
-                    Card(child: Column(children: [
-                      Image.network('https://img.itdg.com.br/tdg/images/recipes/000/003/468/359047/359047_original.jpg?w=1200'),
-                      Text('data'),
-                      Text('data'),
+                    Card(child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                      Image.network('https://listenx.com.br/blog/wp-content/uploads/2022/02/textos-comerciais-para-lojas-de-roupas.png'),
+                      Text('Blazer'),
+                      Text('500.00'),
                     ],),)
                   ],),
         )
