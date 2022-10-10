@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(MaterialApp(
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(const MaterialApp(
     home: MyHome(),
   ));
 }
@@ -27,26 +31,23 @@ class _MyHomeState extends State<MyHome> {
           padding: const EdgeInsets.all(20.0),
           child: TextField(
             decoration: InputDecoration(
-                      labelText: "Busca",
-                      hintText: "Buscar Serviço",
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20.0)))),
+                labelText: "Busca",
+                hintText: "Buscar Serviço",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)))),
           ),
         ),
-       ElevatedButton.icon(
-                    onPressed: () {},
-                    label: Text('Categorias'),
-                    icon: Icon(Icons.apps), 
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 30.0, vertical: 10.0),
-                      primary: Color.fromRGBO(0, 226, 187, 8),
-                      shape: StadiumBorder(),
-                    ),
-                    
-                  ),
+        ElevatedButton.icon(
+          onPressed: () {},
+          label: Text('Categorias'),
+          icon: Icon(Icons.apps),
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+            primary: Color.fromRGBO(0, 226, 187, 8),
+            shape: StadiumBorder(),
+          ),
+        ),
         Text('Pedidos com boas avaliações'),
         Expanded(
           child: GridView(

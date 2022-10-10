@@ -1,4 +1,4 @@
-package com.example.easeexpress
+package br.edu.ifpi.easeexpress
 
 import io.flutter.embedding.android.FlutterActivity
 
