@@ -14,6 +14,7 @@ class ServicoRepository {
             json['nome'], double.parse(json['preco'].toString()), json['descricao'], json['imagem']);
         servicos.add(servico);
       }
+      
       return right<Failure, List<Servico>>(servicos);
     }).catchError((error) {
       return left<Failure, List<Servico>>(Failure());
