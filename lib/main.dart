@@ -1,3 +1,4 @@
+import 'package:easeexpress/presentation/pages/loja/loja_details_page.dart';
 import 'package:easeexpress/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -7,6 +8,6 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   runApp(const MaterialApp(
-    home: HomePage(),
+    home:LojaDetailsPage (),
   ));
 }
