@@ -1,4 +1,4 @@
-import 'package:easeexpress/domain/servico.dart';
+import 'package:easeexpress/domain/entities/servico.dart';
 import 'package:easeexpress/presentation/controllers/home_ctrl.dart';
 import 'package:easeexpress/presentation/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
