@@ -1,5 +1,6 @@
 import 'package:easeexpress/domain/servico.dart';
 import 'package:easeexpress/presentation/controllers/home_ctrl.dart';
+import 'package:easeexpress/presentation/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,44 +42,38 @@ class _HomePageState extends State<HomePage> {
             shape: StadiumBorder(),
           ),
         ),
-        Text('Pedidos com boas avaliações'),
-        Expanded(
-          child: GridView(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
-                childAspectRatio: 1),
-            children: _buildListItens(),
-          ),
-        )
+        const Text('Pedidos com boas avaliações'),
+        FutureBuilder(
+            future: controller.search(),
+            builder: ((context, snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data!.fold((failure) {
+                  return const Center(child: Text('Errro....'));
+                }, (servicos) {
+                  return Expanded(
+                    child: GridView(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                              childAspectRatio: 1),
+                      children: _buildListItens(servicos),
+                    ),
+                  );
+                });
+              }
+
+              return const CircularProgressIndicator();
+            }))
       ]),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            SizedBox(height: 50),
-            ListTile(
-              title: Text('Home'),
-            ),
-            ListTile(
-              title: Text('Buscar'),
-            ),
-            ListTile(
-              title: Text('Favoritos'),
-            ),
-            ListTile(
-              title: Text('Minha Conta'),
-            ),
-          ],
-        ),
-      ),
+      drawer: const MyDrawer(),
     );
   }
 
-  List<Widget> _buildListItens() {
+  List<Widget> _buildListItens(List<Servico> servicos) {
     List<Widget> itens = [];
 
-    List<Servico> servicos = controller.search();
     for (Servico s in servicos) {
       itens.add(Card(
         child: Column(
