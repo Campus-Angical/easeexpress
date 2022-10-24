@@ -1,3 +1,4 @@
+import 'package:easeexpress/presentation/pages/categoria/categoria_list_page.dart';
 import 'package:easeexpress/presentation/pages/loja/loja_details_page.dart';
 import 'package:easeexpress/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
