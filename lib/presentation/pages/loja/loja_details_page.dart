@@ -8,6 +8,7 @@ class LojaDetailsPage extends StatefulWidget {
 }
 
 class _LojaDetailsPageState extends State<LojaDetailsPage> {
+  
    @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +45,24 @@ class _LojaDetailsPageState extends State<LojaDetailsPage> {
             'Meu atelie!',
             style: TextStyle(fontSize: 25),
           ),
+          Expanded(
+                    child: GridView(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                              childAspectRatio: 1),
+                   children: [
+                    ListTile(
+                      
+                    )
+                   ],   
+                    ),
+                  )
         ],
       ),
     );
   }
-
+  
 }
