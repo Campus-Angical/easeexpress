@@ -1,6 +1,7 @@
 import 'package:easeexpress/domain/entities/categoria.dart';
 import 'package:easeexpress/domain/entities/loja.dart';
 import 'package:easeexpress/presentation/controllers/loja/loja_list_ctrl.dart';
+import 'package:easeexpress/presentation/pages/loja/loja_details_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -29,7 +30,7 @@ class LojaListPage extends StatelessWidget {
                               crossAxisSpacing: 8,
                               mainAxisSpacing: 8,
                               childAspectRatio: 1),
-                              children: _buildListItens(lojas),
+                              children: _buildListItens(categoria ,lojas,context),
                               )
                   );
                 });
@@ -40,7 +41,7 @@ class LojaListPage extends StatelessWidget {
       ),
     );
   }
-  List<Widget> _buildListItens (List<Loja>lojas){
+  List<Widget> _buildListItens (Categoria categoria ,List<Loja>lojas, context){
     List<Widget> itens =[];
 
     for (Loja l in lojas) {
@@ -48,7 +49,9 @@ class LojaListPage extends StatelessWidget {
         child: ListTile(
           title: Text(l.nome),
           leading: Icon(Icons.pets),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => LojaDetailsPage(categoria, l)),);
+          },
         ),
         elevation: 8,
         shadowColor: Colors.blue,

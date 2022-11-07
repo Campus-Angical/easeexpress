@@ -1,7 +1,15 @@
+import 'package:easeexpress/domain/entities/categoria.dart';
+import 'package:easeexpress/domain/entities/loja.dart';
+import 'package:easeexpress/domain/entities/servico.dart';
+import 'package:easeexpress/domain/failures/failures.dart';
+import 'package:easeexpress/presentation/controllers/servico/list_details_ctrl.dart';
 import 'package:flutter/material.dart';
 
 class LojaDetailsPage extends StatefulWidget {
-  const LojaDetailsPage({super.key});
+  Categoria categoria;
+  final Loja loja;
+  LojaDetailsCtrl controller = LojaDetailsCtrl();
+  LojaDetailsPage(this.categoria,this.loja, {super.key});
 
   @override
   State<LojaDetailsPage> createState() => _LojaDetailsPageState();
@@ -20,50 +28,40 @@ class _LojaDetailsPageState extends State<LojaDetailsPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20.9),
-            child: TextField(
-              decoration: InputDecoration(
-                
-                  labelText: "Pesquisar",
-                  hintText: "Buscar Serviço",
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12.0)))),
-            ),
-          ),
-          Card(
-            elevation: 200,
-            shape: const CircleBorder(),
-            color: Colors.blue[100],
-            child: Container(
-              width: 200,
-              height: 100,
-              child: Column(children: <Widget>[]),
-            ),
-          ),
-          Text(
-            'Meu atelie!',
-            style: TextStyle(fontSize: 25),
-          ),
-          Expanded(
-                    child: GridView(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 1),
-                   children: [
-                    ListTile(
-                      
-                    )
-                   ],   
-                    ),
-                  )
+        FutureBuilder(
+            future: widget.controller.search(widget.categoria, widget.loja),
+            builder: (((context, snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data!.fold((failure){
+                  return const Center(child: Text('Erro....'));
+                }, (servicos) {
+                  return Expanded(child: GridView(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, 
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
+                      childAspectRatio: 1),
+                      children: _buildListItens(servicos),
+                      )
+                      );
+              });
+              }
+              return const CircularProgressIndicator();
+            })))
         ],
       ),
     );
   }
-  
+    List<Widget> _buildListItens (List<Servico>servicos){
+      List<Widget> itens = [];
+
+      for (Servico s in servicos) {
+        itens.add(Card(
+          child: ListTile(
+            title: Text(s.nome),
+            ),
+        ));
+      }
+      return itens;
+    }
 }

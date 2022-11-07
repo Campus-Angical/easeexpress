@@ -10,6 +10,6 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   runApp(const MaterialApp(
-    home:LojaDetailsPage(),
+    home:CategoriaListPage(),
   ));
 }
