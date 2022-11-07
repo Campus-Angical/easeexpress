@@ -8,7 +8,7 @@ class LojaDetailsPage extends StatefulWidget {
 }
 
 class _LojaDetailsPageState extends State<LojaDetailsPage> {
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -23,6 +23,7 @@ class _LojaDetailsPageState extends State<LojaDetailsPage> {
             padding: const EdgeInsets.all(20.9),
             child: TextField(
               decoration: InputDecoration(
+                
                   labelText: "Pesquisar",
                   hintText: "Buscar Serviço",
                   prefixIcon: Icon(Icons.search),
@@ -48,5 +49,4 @@ class _LojaDetailsPageState extends State<LojaDetailsPage> {
       ),
     );
   }
-
 }

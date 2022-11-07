@@ -1,35 +1,27 @@
-import 'dart:ui';
-
 import 'package:easeexpress/domain/entities/categoria.dart';
 import 'package:easeexpress/domain/entities/loja.dart';
 import 'package:easeexpress/presentation/controllers/loja/loja_list_ctrl.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class LojaListPage extends StatefulWidget {
-  const LojaListPage({super.key});
 
-  @override
-  State<LojaListPage> createState() => _LojaListPageState();
-}
-
-class _LojaListPageState extends State<LojaListPage> {
-  @override
+class LojaListPage extends StatelessWidget {
+  final Categoria categoria;
   LojaListCtrl controller = LojaListCtrl();
-  
-  Widget build(BuildContext context) {
+  LojaListPage(this.categoria, {super.key});
+
+  @override
+ Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
         children: [
           FutureBuilder(
-            future: controller.search(),
+            future: controller.search(categoria),
             builder: ((context, snapshot) {
               if (snapshot.hasData) {
                 return snapshot.data!.fold((failure) {
                   return const Center(child: Text('Errro....'));
-                }, (categorias) {
+                }, (lojas) {
                   return Expanded(
                     child: GridView(
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -37,7 +29,7 @@ class _LojaListPageState extends State<LojaListPage> {
                               crossAxisSpacing: 8,
                               mainAxisSpacing: 8,
                               childAspectRatio: 1),
-                              children: _buildListItens(categorias),
+                              children: _buildListItens(lojas),
                               )
                   );
                 });

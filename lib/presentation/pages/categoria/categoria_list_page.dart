@@ -1,6 +1,7 @@
 import 'package:easeexpress/domain/entities/categoria.dart';
 import 'package:easeexpress/domain/entities/servico.dart';
 import 'package:easeexpress/presentation/controllers/categoria/categoria_list_ctrl.dart';
+import 'package:easeexpress/presentation/pages/loja/loja_list_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -17,7 +18,9 @@ class _CategoriaListPageState extends State<CategoriaListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Categorias'), centerTitle: true,
+      ),
       body: Column(
         children: [
           FutureBuilder(
@@ -31,10 +34,10 @@ class _CategoriaListPageState extends State<CategoriaListPage> {
                     child: GridView(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 1),
+                              crossAxisCount: 3,
+                              crossAxisSpacing: 7,
+                              mainAxisSpacing: 5,
+                              ),
                       children: _buildListItens(categorias),
                     ),
                   );
@@ -51,11 +54,17 @@ class _CategoriaListPageState extends State<CategoriaListPage> {
 
     for (Categoria c in categorias) {
       itens.add(Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(c.nome),
-          ],
+        child: ListTile(
+          title: Center(child: Text(c.nome)),
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => LojaListPage(c)),);
+          },
+        ),
+        elevation: 8,
+        shadowColor: Colors.blue,
+        shape: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.blueAccent, width: 1)
         ),
       ));
     }
