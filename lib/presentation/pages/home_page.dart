@@ -1,5 +1,6 @@
 import 'package:easeexpress/domain/entities/servico.dart';
 import 'package:easeexpress/presentation/controllers/home_ctrl.dart';
+import 'package:easeexpress/presentation/pages/categoria/categoria_list_page.dart';
 import 'package:easeexpress/presentation/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         ElevatedButton.icon(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CategoriaListPage()),);
+          },
           label: Text('Categorias'),
           icon: Icon(Icons.apps),
           style: ElevatedButton.styleFrom(
@@ -42,7 +45,10 @@ class _HomePageState extends State<HomePage> {
             shape: StadiumBorder(),
           ),
         ),
-        const Text('Pedidos com boas avaliações'),
+        Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: const Text('Pedidos com boas avaliações'),
+        ),
         FutureBuilder(
             future: controller.search(),
             builder: ((context, snapshot) {

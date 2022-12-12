@@ -31,14 +31,11 @@ class _CategoriaListPageState extends State<CategoriaListPage> {
                   return const Center(child: Text('Errro....'));
                 }, (categorias) {
                   return Expanded(
-                    child: GridView(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 7,
-                              mainAxisSpacing: 5,
-                              ),
-                      children: _buildListItens(categorias),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: ListView(
+                        children: _buildListItens(categorias),
+                      ),
                     ),
                   );
                 });

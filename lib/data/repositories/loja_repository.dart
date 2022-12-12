@@ -38,4 +38,21 @@ class LojaRepository {
       return left<Failure, List<Loja>>(Failure());
     });
   }
+
+  //exclusão
+Future<Either<Failure, List<Loja>>> excluirCategoria(Categoria categoria) async {
+    return FirebaseFirestore.instance.collection('categorias').doc(categoria.id).collection('lojas').where('nome',isEqualTo: categoria.nome).get().then((snapshot) async {
+      List<Loja> lojas = [];
+      for (QueryDocumentSnapshot doc in snapshot.docs) {
+        final id = doc.reference.id;
+        await FirebaseFirestore.instance
+      .collection('categorias').doc(categoria.id).collection('lojas').doc(id).delete();
+      }
+      
+      return right<Failure, List<Loja>>(lojas);
+    }).catchError((error) {
+      return left<Failure, List<Loja>>(Failure());
+    });
+  }
+
 }

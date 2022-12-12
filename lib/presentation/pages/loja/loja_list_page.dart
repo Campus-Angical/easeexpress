@@ -13,7 +13,9 @@ class LojaListPage extends StatelessWidget {
   @override
  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Lojas'), centerTitle: true,
+      ),
       body: Column(
         children: [
           FutureBuilder(
@@ -24,12 +26,7 @@ class LojaListPage extends StatelessWidget {
                   return const Center(child: Text('Errro....'));
                 }, (lojas) {
                   return Expanded(
-                    child: GridView(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 1),
+                    child: ListView(
                               children: _buildListItens(categoria ,lojas,context),
                               )
                   );
@@ -47,8 +44,7 @@ class LojaListPage extends StatelessWidget {
     for (Loja l in lojas) {
       itens.add(Card(
         child: ListTile(
-          title: Text(l.nome),
-          leading: Icon(Icons.pets),
+          title: Center(child: Text(l.nome)),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => LojaDetailsPage(categoria, l)),);
           },

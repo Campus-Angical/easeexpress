@@ -13,7 +13,7 @@ class ServicoRepository {
         final json = doc.data() as Map<String, dynamic>;
         json['id'] = doc.id;
         Servico servico = Servico(
-           json['id'], json['nome'], double.parse(json['preco'].toString()), json['descricao'], json['imagem']);
+           json['id'], json['nome'], (json['preco']), json['descricao'], json['imagem']);
         servicos.add(servico);
       }
       
@@ -29,7 +29,7 @@ class ServicoRepository {
         final json = doc.data() as Map<String, dynamic>;
         json['id'] = doc.id;
         Servico servico = Servico(
-            json['id'], json['nome'], double.parse(json['preco'].toString()), json['descricao'], json['image']);
+            json['id'], json['nome'], (json['preco']), json['descricao'], json['image']);
         servicos.add(servico);
       }
       

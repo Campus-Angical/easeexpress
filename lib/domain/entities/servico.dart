@@ -1,7 +1,7 @@
 class Servico {
   String id;
   String nome;
-  double preco;
+  String preco;
   String descricao;
   String image;
 

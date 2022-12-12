@@ -12,7 +12,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('conta'),
+          title: Text('Conta'),
           centerTitle: true,
         ),
         drawer: Drawer(),
@@ -43,7 +43,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Senha'),
+                    decoration: InputDecoration(labelText: 'Senha'), 
                     // O validador recebe o texto digitado
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -75,7 +75,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
                           MaterialStateProperty.all<Color>(Colors.blue),
                     ),
                     onPressed: () {},
-                    child: Text('Editar'),
+                    child: Text('Editar') ,
                   )
                 ],
               ))
